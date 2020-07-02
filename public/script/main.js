@@ -41,7 +41,7 @@ $(function() {
       maxConcurrency: maxConcurrency,
       maxDepth: maxDepth
     }, function(data, status) {
-      
+
       data.forEach(function(res) {
         if (res.includes(urlCheck)) {
           //internal pages section
