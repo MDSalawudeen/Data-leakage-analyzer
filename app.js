@@ -6,7 +6,7 @@ const ejs = require("ejs");
 // Initiating express()
 const app = express();
 
-// Configuring application use public folder to serve static files
+// Configuring application to use public folder to serve static files
 app.use(express.static("public"));
 
 //  Configuring application to use bodyParser to read data from request
@@ -34,12 +34,10 @@ app.get("/sitemap", function(req, res) {
       console.log("Fetched a resource!")
     });
 
-  crawler.interval = crawlerInterval; // Ten seconds
+  crawler.interval = crawlerInterval;
   crawler.maxConcurrency = maxConcurrency;
 
-  crawler.maxDepth = maxDepth; // Etc.
-
-  const pages = {};
+  crawler.maxDepth = maxDepth;
 
   crawler.on("discoverycomplete", function(queueItem, resources) {
     console.log("Scan completed")
@@ -50,11 +48,9 @@ app.get("/sitemap", function(req, res) {
 
   crawler.start()
 
-  // console.log(pages)
-
 });
 
 // Configuring listening port for the application, works on heroku and localhost
-app.listen(process.env.PORT || 4000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("Server is running");
 });
